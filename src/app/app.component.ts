@@ -20,6 +20,7 @@ export class AppComponent {
   constructor() {
   }
 
+
   detectPath() {
     const href = window.location.pathname;
     if (href === '/create-event' || href.includes('/private_event') || href.includes('/public_event')) {
