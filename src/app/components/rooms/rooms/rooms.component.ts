@@ -11,6 +11,7 @@ import {RegistrationComponent} from '../../registration/registration.component';
 import {EventsTemplatesDesktopComponent} from '../../createEvent/desktop/events-templates-desktop/events-templates-desktop.component';
 import {RoomModel} from '../../../models/Room.model';
 import {User} from '../../../models/User.model';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-rooms',
@@ -49,12 +50,15 @@ export class RoomsComponent implements OnInit, OnDestroy {
     private postService: PostService,
     private store: Store<AppState>,
     private modalService: NgbModal,
+    private rou: ActivatedRoute
   ) {
     this.findCurrentUser();
   }
 
   ngOnInit(): void {
     this.getAllRoomsFromServer();
+    console.log(this.rou);
+    console.log(window.location.pathname);
   }
 
   @HostListener('click', ['$event'])
