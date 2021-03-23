@@ -19,6 +19,7 @@ import {Subscription} from 'rxjs';
 import {User} from '../../../models/User.model';
 import {RegistrationComponent} from '../../registration/registration.component';
 import biconomyInit from '../../../../app/contract/biconomy';
+import {ActivatedRoute, ActivatedRouteSnapshot, Route, Router} from '@angular/router';
 
 
 @Component({
@@ -62,6 +63,7 @@ export class NavbarComponent implements OnInit, OnDestroy, DoCheck {
   saveUserLocStorage = [];
   logoutBox: boolean;
   copyLinkFlag: boolean;
+  href
 
   constructor(
     private store: Store<AppState>,
@@ -70,8 +72,8 @@ export class NavbarComponent implements OnInit, OnDestroy, DoCheck {
     private getService: GetService,
     private eRef: ElementRef,
     private _clipboardService: ClipboardService,
+    private router: Router,
   ) {
-
     this.detectPath();
 
     this.userSub = this.store.select('user').subscribe((x: User[]) => {
@@ -101,8 +103,9 @@ export class NavbarComponent implements OnInit, OnDestroy, DoCheck {
   }
 
   detectPath() {
-    let href = window.location.pathname;
-    if (href == '/' || href == '/tokensale' || href == "/.well-known/pki-validation/fileauth.txt") {
+    // this.href = window.location.pathname;
+    this.href = this.router.routerState.snapshot.url;
+    if (this.href == '/' || this.href == '/tokensale' || this.href == '/.well-known/pki-validation/fileauth.txt') {
       this.display = false;
     } else {
       this.display = true;

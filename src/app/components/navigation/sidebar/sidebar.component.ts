@@ -1,6 +1,7 @@
 import {Component, DoCheck, HostListener, OnInit} from '@angular/core';
 import {NgbModal, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
 import {EventsTemplatesDesktopComponent} from "../../createEvent/desktop/events-templates-desktop/events-templates-desktop.component";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -14,6 +15,7 @@ export class SidebarComponent implements OnInit, DoCheck {
 
   constructor(
     private modalService: NgbModal,
+    private router: Router,
     config: NgbModalConfig) {
     config.keyboard = false;
     config.backdrop = 'static';
@@ -28,7 +30,8 @@ export class SidebarComponent implements OnInit, DoCheck {
   }
 
   detectPath() {
-    this.currentPath = window.location.pathname;
+    // this.currentPath = window.location.pathname;
+    this.currentPath = this.router.routerState.snapshot.url;
     if (this.currentPath === '/' || this.currentPath === '/tokensale' || this.currentPath.includes('create-event') || this.currentPath.includes('public_event') ||
       this.currentPath.includes('private_event') || this.currentPath == "/.well-known/pki-validation/fileauth.txt") {
       this.display = false;

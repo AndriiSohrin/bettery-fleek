@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {Router} from '@angular/router';
 
 declare global {
   interface Window {
@@ -17,12 +18,13 @@ window.web3 = window.web3 || {};
 export class AppComponent {
   title = 'Quiz';
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
 
   detectPath() {
-    const href = window.location.pathname;
+    // const href = window.location.pathname;
+    const href = this.router.routerState.snapshot.url;
     if (href === '/create-event' || href.includes('/private_event') || href.includes('/public_event')) {
       return {
         'background': '#242521'
