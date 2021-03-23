@@ -7,19 +7,10 @@
   <script> var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : {"default": mod};
   }; </script>
-  <!--  <base href="/">-->
+    <base href="/">
 <!--    <script>-->
 <!--      document.write (`<base href = "${window.location.pathname}" / >`);-->
 <!--    </script>-->
-  <script>
-    (function () {
-      const {pathname} = window.location
-      const ipfsMatch = /.*\/Qm\w{44}\//.exec(pathname)
-      const base = document.createElement('base')
-      base.href = ipfsMatch ? ipfsMatch[0] : '/'
-      document.head.append(base)
-    })()
-  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link
     href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&family=Titillium+Web:ital,wght@0,400;0,600;1,600&display=swap"

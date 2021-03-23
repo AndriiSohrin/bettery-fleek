@@ -75,7 +75,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
             { path: '', component: HomeComponent },
             { path: 'tokensale', component: ErcCoinSaleComponent },
             { path: '.well-known/pki-validation/fileauth.txt', component: FileauthComponent }
-        ], { scrollPositionRestoration: 'top' }),
+        ], { scrollPositionRestoration: 'top', useHash: true }),
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
@@ -91,7 +91,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
     providers: [
         PostService,
         GetService,
-        { provide: RECAPTCHA_V3_SITE_KEY, useValue: '6Lf7m88ZAAAAAPQIjM2Wn9uJhi8QNjt26chDnnlF' }
+        { provide: RECAPTCHA_V3_SITE_KEY, useValue: '6Lf7m88ZAAAAAPQIjM2Wn9uJhi8QNjt26chDnnlF' },
     ],
     bootstrap: [
         AppComponent
